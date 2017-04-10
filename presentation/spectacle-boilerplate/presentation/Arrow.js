@@ -6,7 +6,8 @@ export const Arrow = (p) => {
         height, 
         margin = 10, 
         length = 20,
-        lineStyle = {}
+        lineStyle = {},
+        rotation = 0
     } = p;
     if(!height || !width) {
         throw Error("width and height attrbute must be defined")
@@ -21,7 +22,9 @@ export const Arrow = (p) => {
         [0, height- margin],
     ].map(p => p.join(',')).join(' ');
     return (
-        <svg width={width} height={height}>
+        <svg width={width} height={height} style={{
+            transform: `rotate(${rotation}deg)`
+        }}>
             <polyline points={points} style={lineStyle} />
         </svg>
     )

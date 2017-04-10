@@ -8,15 +8,18 @@ import {
   Deck,
   Heading,
   ListItem,
-  List,
+  List, Link,
   Quote,
   Image,
   Slide,
   Text,
-  Layout,
-  Fit, Fill, Markdown, Appear
+  Layout, S,
+  Fit, Fill, Markdown, Appear, MarkdownSlides
 } from "spectacle";
+import {CsSlide, CsHeading} from './theme'
 import {Arrow} from './Arrow';
+
+import toolsMd from './tools.md';
 
 // Import image preloader util
 import preloader from "spectacle/lib/utils/preloader";
@@ -35,13 +38,16 @@ const images = {
   logo: require("../assets/formidable-logo.svg"),
   markdown: require("../assets/markdown.png"),
   coding: require("../assets/coding_house.gif"),
-  awesome: require('../assets/awesome.gif')
+  awesome: require('../assets/awesome.gif'),
+  heroku: require('../assets/Heroku-01.png'),
+  github: require('../assets/GitHub-Mark/PNG/GitHub-Mark-Light-120px-plus.png'),
+  travis: require('../assets/Travis.png')
 };
 
 preloader(images);
 
 const theme = createTheme({
-  primary: "#white",
+  primary: "#151515",
   secondary: "#fecc00",
   tertiary: "#159700",
   quartenary: "#828282",
@@ -61,7 +67,7 @@ export default class Presentation extends React.Component {
             Release it!
           </Heading>
           <Text margin="10px 0 0" textColor="tertiary" size={1} fit bold>
-            Continious deploymetn for everyone
+            Continious deployment for everyone
           </Text>
         </Slide>
         <Slide transition={["fade"]}  bgColor="background" >
@@ -69,7 +75,7 @@ export default class Presentation extends React.Component {
           <Image src={images.coding} />
         </Slide>
         <Slide transition={["fade"]}  bgColor="background" >
-          <Heading size={4} textColor="secondary" caps>And you want to show your users the awesomeness</Heading>
+          <Heading size={4} textColor="secondary" caps>...and you want to show your users the awesomeness</Heading>
           <Image src={images.awesome} />
         </Slide>
         <Slide transition={["slide"]} bgColor="background" textColor="tertiary">
@@ -77,7 +83,7 @@ export default class Presentation extends React.Component {
           <Layout>
             <Fill>
               <Heading size={5} textColor="secondary">
-                <Text textColor="quartenary">{`{ }`}</Text> Your Code
+                <span style={{color: theme.screen.colors.quartenary}}>{`{ }`}</span> Your Code
               </Heading>
               <List>
                 <ListItem>Local</ListItem>
@@ -87,7 +93,7 @@ export default class Presentation extends React.Component {
             </Fill>
             <Fill>
               <Heading size={5} textColor="secondary">
-                <Text textColor="quartenary">&gt;_</Text> Running App
+                <span style={{color: theme.screen.colors.quartenary}}>&gt;_</span> Running App
               </Heading>
               <List>
                 <ListItem>Hosted</ListItem>
@@ -103,7 +109,7 @@ export default class Presentation extends React.Component {
           }} />
         </Slide>
         <Slide transition={["slide"]} bgColor="background">
-          <Heading textColor="secondary">Considerations</Heading>
+          <Heading textColor="secondary" size={4}>Considerations</Heading>
           <Text textColor="tertiary">Code must be ...</Text>
             <List textColor="tertiary">
               <ListItem>...tested</ListItem>
@@ -112,28 +118,146 @@ export default class Presentation extends React.Component {
             </List>
           <Text textColor="quartenary">Can we automate this?</Text>
         </Slide>
-        <Slide transition={["slide"]} bgColor="background">
-          <Heading textColor="secondary">Yes we can</Heading>
-          <Text>Add short describtion about CI</Text>
+        <Slide transition={[ "fade"]} bgColor="secondary">
+          <BlockQuote >
+            <Quote>
+            Continuous integration is a [...] practice where members of a team integrate their work frequently [...]. 
+            </Quote>
+            <Cite>
+              <Link href="https://www.martinfowler.com/articles/continuousIntegration.html">Martin Fowler</Link>
+            </Cite>
+          </BlockQuote>
         </Slide>
-        <Slide transition={["slide"]} bgColor="background">
-          <Heading size={5} textColor="secondary">
-            <Text textColor="quartenary">{`{ }`}</Text> Your Code
-          </Heading>
-          <Layout textColor="tertiary"> 
-            <Appear><Fill>
-              <Text textAlign="center">Respository</Text>
-            </Fill></Appear>
-            <Appear><Fill>
-              <Text textAlign="center">CI Server</Text>
-            </Fill></Appear>
-            <Appear><Fill>
-              <Text textAlign="center">Hosting Server / Cloud</Text>
-            </Fill></Appear>
+        <Slide transition={["fade"]} bgColor="secondary">
+          <BlockQuote >
+            <Quote>
+            [...] integration is <i>verified</i> by an <i>automated build</i> (including <i>test</i>) to detect integration errors [...].
+            </Quote>
+            <Cite>
+              <Link href="https://www.martinfowler.com/articles/continuousIntegration.html">Martin Fowler</Link>
+            </Cite>
+          </BlockQuote>
+        </Slide>
+        <Slide transition={["fade"]} bgColor="background">
+          <Text size={5} textColor="secondary" textAlign="left">
+            <span style={{color: theme.screen.colors.quartenary}}>{`{ }`}</span> Your Code <br />
+            <Appear>
+              <Text margin={15}>
+                <Arrow width={30} height={30} style={{marginLeft:50}} rotation={90} lineStyle={{ fill: theme.screen.colors.secondary,
+                  strokeWidth: 0}} />
+              </Text>
+            </Appear>
+          </Text>
+          <Layout margin={15} style={{height:'25vh'}}> 
+            <Appear>
+              <Fill>
+                <Text  textColor="tertiary" textAlign="center">Respository</Text>
+              </Fill>
+            </Appear>
+            <Appear>
+              <Fill>
+                <Arrow width={50} height={30} lineStyle={{ fill: theme.screen.colors.secondary,
+            strokeWidth: 0}} />
+              </Fill>
+            </Appear>
+            <Appear>
+              <Fill>
+                <Text textColor="tertiary" textAlign="center">CI Server</Text>
+              </Fill>
+            </Appear>
+            <Appear>
+              <Fill>
+                <Arrow width={50} height={30} lineStyle={{ fill: theme.screen.colors.secondary,
+            strokeWidth: 0}} />
+              </Fill>
+            </Appear>
+            <Appear>
+              <Fill>
+                <Text textColor="tertiary" textAlign="center">Cloud</Text>
+              </Fill>
+            </Appear>
           </Layout>
-          <Heading size={5} textColor="secondary">
-            <Text textColor="quartenary">&gt;_</Text> Running App
-          </Heading>
+          <Text size={5} textColor="secondary" textAlign="right">
+            <Appear>
+              <Text margin={5}>
+                <Arrow width={30} height={30} rotation={90} lineStyle={{   fill: theme.screen.colors.secondary,
+                strokeWidth: 0}} />
+              </Text> 
+            </Appear>
+            <br />
+            <span style={{color: theme.screen.colors.quartenary}}>&gt;_</span> Running App
+          </Text>
+        </Slide>
+        <Slide transition={["fade"]} bgColor="background">
+          <Text size={5} textColor="secondary" textAlign="left">
+            <span style={{color: theme.screen.colors.quartenary}}>{`{ }`}</span> Your Code <br />
+              <Text margin={15}>
+                <Arrow width={30} height={30} style={{marginLeft:50}} rotation={90} lineStyle={{ fill: theme.screen.colors.secondary,
+                  strokeWidth: 0}} />
+              </Text>
+          </Text>
+          <Layout margin={15} style={{height:'25vh'}}> 
+              <Fill>
+                <Image style={{width:'15vw'}} src={images.github} />
+              </Fill>
+              <Fill>
+                <Arrow width={50} height={30} lineStyle={{ fill: theme.screen.colors.secondary,
+            strokeWidth: 0}} />
+              </Fill>
+              <Fill>
+                <Image style={{width:'15vw'}} src={images.travis} />
+              </Fill>
+              <Fill>
+                <Arrow width={50} height={30} lineStyle={{ fill: theme.screen.colors.secondary,
+            strokeWidth: 0}} />
+              </Fill>
+              <Fill>
+                <Image style={{width:'15vw'}} src={images.heroku} />
+              </Fill>
+          </Layout>
+          <Text size={5} textColor="secondary" textAlign="right">
+              <Text margin={5}>
+                <Arrow width={30} height={30} rotation={90} lineStyle={{   fill: theme.screen.colors.secondary,
+                strokeWidth: 0}} />
+              </Text> 
+            <br />
+            <span style={{color: theme.screen.colors.quartenary}}>&gt;_</span> Running App
+          </Text>
+        </Slide>
+        <Slide transition={['slide']}>
+          <Markdown>{`
+## Github
+- Collaborative Development
+- Development Processes (GitFlow)
+- Free for **open** projects
+- more...
+          `}</Markdown>
+        </Slide>
+        <Slide transition={['slide']}>
+          <Markdown>{`
+## Travis
+- CI Server
+- Free for GitHub Projects
+          `}</Markdown>
+        </Slide> 
+        <Slide transition={['slide']}>
+          <Markdown>{`
+## Heroku
+- Cloud platform
+- Hosted Apps in the cloud
+- Supports many languages
+- Other services like database available
+          `}</Markdown>
+        </Slide>
+        <Slide transition={["slide"]}>
+          <Markdown>{`
+## What we are going to deploy?
+- React based app
+- Express (NodeJs) server
+- Database dependency
+- Bundled with Webpack
+- Two Artifacts for server and client
+          `}</Markdown>
         </Slide>
       </Deck>
     );
