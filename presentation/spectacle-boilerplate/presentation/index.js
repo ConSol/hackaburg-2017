@@ -52,7 +52,8 @@ const images = {
   build: require('../assets/diagrams-build.svg'),
   process: require('../assets/diagrams-process.svg'),
   herokuDashboard: require('../assets/heroku.png'),
-  herokuSettings: require('../assets/heroku-settings.png')
+  herokuSettings: require('../assets/heroku-settings.png'),
+  labsLogo: require('../assets/logo-consol-labs.png')
 };
 
 preloader(images);
@@ -84,7 +85,7 @@ export default class Presentation extends React.Component {
               Release it!
           </Heading>
             <Text margin="10px 0 0" textColor="tertiary" size={1} fit bold>
-              Continious deployment for everyone
+              Continuous deployment for everyone
           </Text>
           </Slide>
           <Slide transition={["fade"]} bgColor="background" >
@@ -104,7 +105,7 @@ export default class Presentation extends React.Component {
               </Heading>
                   <List>
                     <ListItem>Local</ListItem>
-                    <ListItem>Textfiles</ListItem>
+                    <ListItem>Text files</ListItem>
                     <ListItem>Editable</ListItem>
                   </List>
                 </Fill>
@@ -141,26 +142,27 @@ export default class Presentation extends React.Component {
             </List>
             <Text textColor="quartenary">Can we automate this?</Text>
           </Slide>
-          <Slide transition={["fade"]} bgColor="secondary">
-            <BlockQuote >
-              <Quote>
-                Continuous integration is a [...] practice where members of a team integrate their work frequently [...].
-            </Quote>
-              <Cite>
-                <Link href="https://www.martinfowler.com/articles/continuousIntegration.html">Martin Fowler</Link>
-              </Cite>
-            </BlockQuote>
-          </Slide>
-          <Slide transition={["fade"]} bgColor="secondary">
-            <BlockQuote >
-              <Quote>
-                [...] integration is <i>verified</i> by an <i>automated build</i> (including <i>test</i>) to detect integration errors [...].
-            </Quote>
-              <Cite>
-                <Link href="https://www.martinfowler.com/articles/continuousIntegration.html">Martin Fowler</Link>
-              </Cite>
-            </BlockQuote>
-          </Slide>
+          {/*TODO: Finde des dauert dann fast zu lang bis wir zum Fleisch kommen - evtl Tonspur?*/}
+          {/*<Slide transition={["fade"]} bgColor="secondary">*/}
+            {/*<BlockQuote >*/}
+              {/*<Quote>*/}
+                {/*Continuous integration is a [...] practice where members of a team integrate their work frequently [...].*/}
+            {/*</Quote>*/}
+              {/*<Cite>*/}
+                {/*<Link href="https://www.martinfowler.com/articles/continuousIntegration.html">Martin Fowler</Link>*/}
+              {/*</Cite>*/}
+            {/*</BlockQuote>*/}
+          {/*</Slide>*/}
+          {/*<Slide transition={["fade"]} bgColor="secondary">*/}
+            {/*<BlockQuote >*/}
+              {/*<Quote>*/}
+                {/*[...] integration is <i>verified</i> by an <i>automated build</i> (including <i>test</i>) to detect integration errors [...].*/}
+            {/*</Quote>*/}
+              {/*<Cite>*/}
+                {/*<Link href="https://www.martinfowler.com/articles/continuousIntegration.html">Martin Fowler</Link>*/}
+              {/*</Cite>*/}
+            {/*</BlockQuote>*/}
+          {/*</Slide>*/}
           <Slide transition={["fade"]} bgColor="background">
             <Heading size={4} textColor="secondary" caps>General Pipeline</Heading>
             <Text size={5} textColor="secondary" textAlign="left">
@@ -174,7 +176,7 @@ export default class Presentation extends React.Component {
             </Text>
             <Layout margin={15} style={{ height: '25vh' }}>              
                 <Fill style={styles.centeredContent} className="test">
-                  <Text textColor="tertiary" textAlign="center">Respository</Text>
+                  <Text textColor="tertiary" textAlign="center">Repository</Text>
                 </Fill>
                 <Fill style={styles.centeredContent}>
                   <Arrow width={50} height={30} lineStyle={{
@@ -275,12 +277,13 @@ export default class Presentation extends React.Component {
             <Markdown>{`
 - Aborts on error
 - Executable in CI Environment
-- All dependecies are defined via _npm_
-- _Dist Files_ are the target to deploy
+- All dependencies are defined via __npm__
+- __Dist Files__ are the target to deploy
           `}</Markdown>
+            {/*TODO 'Dist Files' evtl. grün*/}
           </Slide>
           <Slide transition={['slide']}>
-            <Heading size={4} textColor="secondary" caps>Deploy Pipeline</Heading>
+            <Heading size={4} textColor="secondary" caps>Deployment Pipeline</Heading>
             <Image src={images.process} />
           </Slide>
           <CodeSlide
@@ -333,6 +336,7 @@ export default class Presentation extends React.Component {
             <Heading size={4} textColor="secondary" caps>Alternatives</Heading>
             <Text textColor="quartenary">Some alternative providers</Text>
             <List>
+              {/*TODO Farben sind irgendwie voll krass,lenken fast zu viel vom Inhalt ab*/}
               <ListItem>GitLab: Repo + CI</ListItem>
               <ListItem>
                 <Link href="https://developer.github.com/guides/building-a-ci-server/" target="_blank">Custom CI with GitHub Hooks</Link>                
@@ -355,6 +359,11 @@ export default class Presentation extends React.Component {
 - You can automate (almost) everthing
             `}</Markdown>
             <Text textColor="quartenary">This was only a small start: Find your way and tools &#x1F44D;</Text>
+          </Slide>
+          <Slide transition={["slide"]}>
+            {/*TODO: abschluss slide mit Consol + ConSolLabs Logo bzw. Kontaktdaten wäre gut*/}
+            <Text size={4} textColor="secondary">... more? </Text>
+            <Link target="_blank" href="http://labs.consol.de"><Image display="flex" src={images.labsLogo}/></Link>
           </Slide>
         </Deck>
       </Spectacle>
