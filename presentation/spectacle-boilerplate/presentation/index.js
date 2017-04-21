@@ -98,7 +98,7 @@ export default class Presentation extends React.Component {
           <Slide transition={["slide"]} bgColor="background" textColor="tertiary">
             <Heading size={4} textColor="secondary" caps>The Challenge?</Heading>
             <Layout>
-              <Appear>
+
                 <Fill>
                   <Heading size={5} textColor="secondary">
                     <span style={{ color: theme.screen.colors.quartenary }}>{`{ }`}</span> Your Code
@@ -109,8 +109,7 @@ export default class Presentation extends React.Component {
                     <ListItem>Editable</ListItem>
                   </List>
                 </Fill>
-              </Appear>
-              <Appear>
+          
                 <Fill>
                   <Heading size={5} textColor="secondary">
                     <span style={{ color: theme.screen.colors.quartenary }}>&gt;_</span> Running App
@@ -121,7 +120,7 @@ export default class Presentation extends React.Component {
                     <ListItem>Executable</ListItem>
                   </List>
                 </Fill>
-              </Appear>
+
             </Layout>
             <Appear>
               <Text textColor="quartenary">How to get there? <br />
@@ -136,9 +135,10 @@ export default class Presentation extends React.Component {
             <Heading textColor="secondary" size={4} caps>Considerations</Heading>
             <Text textColor="tertiary">Code must be ...</Text>
             <List textColor="tertiary">
+              <ListItem>...(compiled)</ListItem>
               <ListItem>...tested</ListItem>
-              <ListItem>...compiled, packaged, etc</ListItem>
-              <ListItem>...deployed, uploaded</ListItem>
+              <ListItem>...packaged</ListItem>
+              <ListItem>...deployed / uploaded</ListItem>
             </List>
             <Text textColor="quartenary">Can we automate this?</Text>
           </Slide>
@@ -339,14 +339,14 @@ export default class Presentation extends React.Component {
               {/*TODO Farben sind irgendwie voll krass,lenken fast zu viel vom Inhalt ab*/}
               <ListItem>GitLab: Repo + CI</ListItem>
               <ListItem>
-                <Link href="https://developer.github.com/guides/building-a-ci-server/" target="_blank">Custom CI with GitHub Hooks</Link>                
+                <Link textColor="tertiary" href="https://developer.github.com/guides/building-a-ci-server/" target="_blank">Custom CI with GitHub Hooks</Link>                
               </ListItem>
               <ListItem>Clouds:&nbsp;
-                <Link target="_blank" href="https://www.ctl.io/appfog/">Appfog</Link>,
-                <Link target="_blank" href="https://www.cloudfoundry.org"> Cloud&nbsp;Foundry</Link>, 
-                <Link target="_blank" href="https://aws.amazon.com/de/free/"> AWS</Link>, 
-                <Link target="_blank" href="https://azure.microsoft.com/en-us/services/app-service/web/"> Azure</Link>,
-                <Link target="_blank" href="https://cloud.google.com/appengine/">Google&nbsp;App&nbsp;Engine</Link>, many more...
+                <Link textColor="tertiary" target="_blank" href="https://www.ctl.io/appfog/">Appfog</Link>,
+                <Link textColor="tertiary" target="_blank" href="https://www.cloudfoundry.org"> Cloud&nbsp;Foundry</Link>, 
+                <Link textColor="tertiary" target="_blank" href="https://aws.amazon.com/de/free/"> AWS</Link>, 
+                <Link textColor="tertiary" target="_blank" href="https://azure.microsoft.com/en-us/services/app-service/web/"> Azure</Link>,
+                <Link textColor="tertiary" target="_blank" href="https://cloud.google.com/appengine/">Google&nbsp;App&nbsp;Engine</Link>, many more...
               </ListItem>
             </List>
             <Text textColor="quartenary">The decision depends on your requirements</Text>
@@ -356,14 +356,24 @@ export default class Presentation extends React.Component {
             <Markdown>{`
 - Deployment and hosting can be free
 - Travis can run local build tasks
-- You can automate (almost) everthing
+- You can automate (almost) everything
             `}</Markdown>
             <Text textColor="quartenary">This was only a small start: Find your way and tools &#x1F44D;</Text>
           </Slide>
           <Slide transition={["slide"]}>
             {/*TODO: abschluss slide mit Consol + ConSolLabs Logo bzw. Kontaktdaten wäre gut*/}
-            <Text size={4} textColor="secondary">... more? </Text>
-            <Link target="_blank" href="http://labs.consol.de"><Image display="flex" src={images.labsLogo}/></Link>
+            <Heading size={4} textColor="secondary" caps>... more? </Heading>
+            <br />
+            <Link target="_blank" href="http://labs.consol.de">
+              <Image width="40%" display="flex" src={images.labsLogo}/>
+            </Link>
+          </Slide>
+          <Slide transition={["slide"]}>
+            {/*TODO: abschluss slide mit Consol + ConSolLabs Logo bzw. Kontaktdaten wäre gut*/}
+            <Heading size={4} textColor="secondary" caps>... Job? </Heading><br />
+            <Link textColor="tertiary" textSize={50} target="_blank" href="http://dev.consol.de">
+              dev.consol.de
+            </Link>
           </Slide>
         </Deck>
       </Spectacle>

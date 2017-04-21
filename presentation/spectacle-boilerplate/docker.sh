@@ -1,0 +1,1 @@
+docker build -t hackaburg-presentation . && docker run -v "$PWD":/usr/src/app -p 3000:3000echo hackaburg-presentation
