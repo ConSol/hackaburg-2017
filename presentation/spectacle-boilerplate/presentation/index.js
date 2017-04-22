@@ -299,12 +299,14 @@ export default class Presentation extends React.Component {
                   <Code textColor="quartenary">$ travis encrypt VAR="content" --add</Code>
                 </div>
               )},
-              { loc: [8,10], note: 'Prepare your build environment with the Heroku CLI'},
-              { loc: [10,12], note: 'Run the build'},
-              { loc: [12,13], note: 'Do the deployment - a bit complicated :('},
+              { loc: [8,12], note: 'Prepare and Build'},
+              { loc: [9,10], note: 'Install Heroku CLI (required later)'},
+              { loc: [10,11], note: 'Run the tests'},
+              { loc: [11,12], note: 'Run the build and create dist/ files'},
+              { loc: [13,28], note: 'Deploy it!'},
               { loc: [13,19], note: 'Tell Heroku CLI to autheticate headless'},
               { loc: [19,25], note: 'Go to dist/ folder and configure a local, temporary git repo'},
-              { loc: [33,34], note: 'Push all contents to Heroku!'},
+              { loc: [25,28], note: 'Commit and push all contents to Heroku!'},
             ]}
           />
           <Slide transition={['slide']}>                        

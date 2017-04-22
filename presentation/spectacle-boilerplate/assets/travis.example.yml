@@ -3,12 +3,12 @@ node_js:
 - '7'
 env:
   global:
-  - secure: XHc...
-  - secure: lMl...
+  - secure: XHc8e7Armt1/vjFShAg4KpWfLo...
+  - secure: lMlnfb99kluJpAt3XPPPjA+1wF...
 sudo: required
 before_script:
 - wget -qO- https://toolbelt.heroku.com/install.sh | sh
-script:
+- npm test
 - npm run build
 after_script:
 - echo "machine api.heroku.com" >> ~/.netrc
@@ -23,12 +23,5 @@ after_script:
 - git init
 - /usr/local/heroku/bin/heroku git:remote -a consol-100000000000
 - git add .
-- git status
 - git commit -m "Deployment from `date`"
-- echo "Host heroku.com" >> ~/.ssh/config
-- echo "   StrictHostKeyChecking no" >> ~/.ssh/config
-- echo "   CheckHostIP no" >> ~/.ssh/config
-- echo "   UserKnownHostsFile=/dev/null" >> ~/.ssh/config
-- /usr/local/heroku/bin/heroku keys:clear
-- yes | /usr/local/heroku/bin/heroku keys:add
 - yes | git push heroku master --force
